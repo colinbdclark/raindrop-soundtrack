@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Raindrop</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="../flocking/ui/play-button/css/play-button.css" />
+        <link rel="stylesheet" type="text/css" href="../flocking/ui/shared/css/flocking-icon-font.css" />
+        <link rel="stylesheet" type="text/css" href="css/raindrop.css" />
+
+        <script src="../flocking/third-party/jquery/js/jquery.js"></script>
+        <script src="../flocking/third-party/infusion/js/Fluid.js"></script>
+        <script src="../flocking/third-party/infusion/js/FluidDocument.js"></script>
+        <script src="../flocking/third-party/infusion/js/FluidDOMUtilities.js"></script>
+        <script src="../flocking/third-party/infusion/js/FluidDebugging.js"></script>
+        <script src="../flocking/third-party/infusion/js/FluidIoC.js"></script>
+        <script src="../flocking/third-party/infusion/js/DataBinding.js"></script>
+        <script src="../flocking/third-party/infusion/js/ModelTransformation.js"></script>
+        <script src="../flocking/third-party/infusion/js/ModelTransformationTransforms.js"></script>
+        <script src="../flocking/third-party/infusion/js/FluidView.js"></script>
+
+        <script src="../flocking/third-party/webarraymath/js/webarraymath.js"></script>
+        <script src="../flocking/third-party/simjs/js/random-0.26.js"></script>
+
+        <script src="../flocking/flocking/flocking-core.js"></script>
+        <script src="../flocking/flocking/flocking-buffers.js"></script>
+        <script src="../flocking/flocking/flocking-parser.js"></script>
+        <script src="../flocking/flocking/flocking-audiofile.js"></script>
+        <script src="../flocking/flocking/flocking-audiofile-encoder.js"></script>
+        <script src="../flocking/flocking/flocking-scheduler.js"></script>
+        <script src="../flocking/flocking/flocking-webaudio.js"></script>
+        <script src="../flocking/flocking/flocking-ugens.js"></script>
+        <script src="../flocking/flocking/flocking-ugens-bandlimited.js"></script>
+        <script src="../flocking/flocking/flocking-envelopes.js"></script>
+        <script src="../flocking/ui/play-button/js/play-button.js"></script>
+
+        <script src="js/raindrop.js"></script>
+    </head>
+
+    <body>
+
+        <div id="controls">
+            <!-- TODO: The Play Button component should add this classes! -->
+            <button id="play">Play</button>
+            <h1 id="title">Raindrop</h1>
+            <p id="credit">by Colin Clark</p>
+        </div>
+
+        <script>
+            colin.raindrop("#controls");
+        </script>
+    </body>
+</html>

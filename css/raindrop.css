@@ -1,0 +1,23 @@
+body {
+    background-color: #ccc;
+    color: #222;
+    font-family: sans-serif;
+    padding-left: 0.5em;
+    padding-top: 1em;
+}
+
+#play {
+    margin-right: 1em;
+    margin-top: 0.5em;
+}
+
+#title {
+    display: inline;
+}
+
+#credit {
+    font-style: italic;
+    font-size: 90%;
+    margin-left: 4.5em;
+    margin-top: 0;
+}

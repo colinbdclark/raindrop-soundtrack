@@ -21,19 +21,14 @@
         <script src="../flocking/third-party/webarraymath/js/webarraymath.js"></script>
         <script src="../flocking/third-party/simjs/js/random-0.26.js"></script>
 
-        <script src="../flocking/flocking/flocking-core.js"></script>
-        <script src="../flocking/flocking/flocking-buffers.js"></script>
-        <script src="../flocking/flocking/flocking-parser.js"></script>
-        <script src="../flocking/flocking/flocking-audiofile.js"></script>
-        <script src="../flocking/flocking/flocking-audiofile-encoder.js"></script>
-        <script src="../flocking/flocking/flocking-scheduler.js"></script>
-        <script src="../flocking/flocking/flocking-webaudio.js"></script>
-        <script src="../flocking/flocking/flocking-ugens.js"></script>
-        <script src="../flocking/flocking/flocking-ugens-bandlimited.js"></script>
-        <script src="../flocking/flocking/flocking-envelopes.js"></script>
+        <script src="../flocking/dist/flocking-all.js"></script>
         <script src="../flocking/ui/play-button/js/play-button.js"></script>
 
         <script src="js/raindrop.js"></script>
+        <script src="js/buffers.js"></script>
+        <script src="js/audiofile-players.js"></script>
+        <script src="js/macro-structure.js"></script>
+
     </head>
 
     <body>
@@ -46,7 +41,7 @@
         </div>
 
         <script>
-            colin.raindrop("#controls");
+            raindrop.composition("#controls");
         </script>
     </body>
 </html>

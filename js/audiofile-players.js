@@ -6,6 +6,7 @@
         bus: undefined,
         buffer: undefined,
         speed: 1.0,
+        loop: 0.0,
 
         synthDef: {
             ugen: "flock.ugen.out",
@@ -13,7 +14,7 @@
             expand: 1,
             sources: {
                 ugen: "flock.ugen.playBuffer",
-                loop: 0.0,
+                loop: "{that}.options.loop",
                 speed: "{that}.options.speed",
                 buffer: "{that}.options.buffer"
             }
@@ -38,5 +39,29 @@
             mul: 0.02,
             add: 0.98
         }
+    });
+
+    fluid.defaults("raindrop.sunOneModePlayer", {
+        gradeNames: ["raindrop.audioBusPlayer", "autoInit"],
+
+        buffer: "sun-sounds-one-mode-I-1-2",
+        bus: 11,
+        loop: 1.0
+    });
+
+    fluid.defaults("raindrop.jcycloPlayer", {
+        gradeNames: ["raindrop.audioBusPlayer", "autoInit"],
+
+        buffer: "jcyclo",
+        bus: 12,
+        loop: 1.0
+    });
+
+    fluid.defaults("raindrop.casSedPlayer", {
+        gradeNames: ["raindrop.audioBusPlayer", "autoInit"],
+
+        buffer: "cas-sed",
+        bus: 13,
+        loop: 1.0
     });
 }());

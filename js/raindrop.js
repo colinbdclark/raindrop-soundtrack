@@ -38,34 +38,83 @@
                 }
             },
 
+            sunOne: {
+                type: "raindrop.sunOneModePlayer",
+                options: {
+                    addToEnvironment: 2
+                }
+            },
+
+            jcyclo: {
+                type: "raindrop.jcycloPlayer",
+                options: {
+                    addToEnvironment: 3
+                }
+            },
+
+            casSed: {
+                type: "raindrop.casSedPlayer",
+                options: {
+                    addToEnvironment: 4
+                }
+            },
+
             macroSynth: {
                 type: "raindrop.macroSynth",
                 options: {
                     inBus: "{chopinLeft}.options.bus",
-                    outBus: 11,
-                    addToEnvironment: 2
+                    outBus: 14,
+                    addToEnvironment: 5
                 }
             },
 
             warbledPiano: {
                 type: "raindrop.warbledRightPiano",
                 options: {
-                    addToEnvironment: 3
+                    addToEnvironment: 6
                 }
             },
 
-            distortedPiano: {
-                type: "raindrop.distortedLeftPiano",
-                options: {
-                    addToEnvironment: 3
-                }
-            },
+            // distortedPiano: {
+            //     type: "raindrop.distortedLeftPiano",
+            //     options: {
+            //         addToEnvironment: 7
+            //     }
+            // },
 
-            leftBreathing: {
+            breathing: {
                 type: "raindrop.breathing",
                 options: {
                     bus: "{chopinLeft}.options.bus",
-                    addToEnvironment: 3
+                    addToEnvironment: 8
+                }
+            },
+
+            sun: {
+                type: "raindrop.sunOneModeModulated",
+                options: {
+                    addToEnvironment: 9
+                }
+            },
+
+            jupiter: {
+                type: "raindrop.jcycloModulated",
+                options: {
+                    addToEnvironment: 10
+                }
+            },
+
+            cassini: {
+                type: "raindrop.casSedModulated",
+                options: {
+                    addToEnvironment: 11
+                }
+            },
+
+            pianoGrains: {
+                type: "raindrop.granulatedPiano",
+                options: {
+                    addToEnvironment: 12
                 }
             }
         },

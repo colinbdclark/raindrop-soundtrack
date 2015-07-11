@@ -10,7 +10,7 @@
         gradeNames: ["flock.synth", "autoInit"],
 
         inBus: 9,
-        outBus: 11,
+        outBus: 14,
 
         synthDef: {
             ugen: "flock.ugen.out",

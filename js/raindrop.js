@@ -41,23 +41,30 @@
             macroSynth: {
                 type: "raindrop.macroSynth",
                 options: {
-                    bus: "{chopinLeft}.options.bus",
+                    inBus: "{chopinLeft}.options.bus",
+                    outBus: 11,
                     addToEnvironment: 2
                 }
             },
 
-            audible: {
-                type: "flock.synth",
+            warbledPiano: {
+                type: "raindrop.warbledRightPiano",
                 options: {
-                    synthDef: {
-                        ugen: "flock.ugen.in",
-                        bus: 10,
-                        mul: {
-                            ugen: "flock.ugen.in",
-                            bus: 11,
-                            mul: 10
-                        }
-                    },
+                    addToEnvironment: 3
+                }
+            },
+
+            distortedPiano: {
+                type: "raindrop.distortedLeftPiano",
+                options: {
+                    addToEnvironment: 3
+                }
+            },
+
+            leftBreathing: {
+                type: "raindrop.breathing",
+                options: {
+                    bus: "{chopinLeft}.options.bus",
                     addToEnvironment: 3
                 }
             }

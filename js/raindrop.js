@@ -129,6 +129,12 @@
                 options: {
                     addToEnvironment: 15
                 }
+            },
+            recorder: {
+                type: "raindrop.recorder",
+                options: {
+                    addToEnvironment: 16
+                }
             }
         },
 
@@ -154,5 +160,55 @@
             "{composition}.events.onReady": "{that}.enable()"
         }
     });
+
+    fluid.defaults("raindrop.recorder", {
+        gradeNames: ["flock.synth", "autoInit"],
+
+        duration: 6 * 60,
+
+        synthDef: {
+            ugen: "flock.ugen.writeBuffer",
+            options: {
+                duration: "{that}.options.duration",
+                numOutputs: 2
+            },
+            buffer: "raindrop",
+            sources: [
+                {
+                    ugen: "flock.ugen.in",
+                    bus: 0
+                },
+                {
+                    ugen: "flock.ugen.in",
+                    bus: 1
+                }
+            ]
+        },
+
+        events: {
+            onRecord: "{playButton}.events.onPlay",
+            afterRecorded: null
+        },
+
+        listeners: {
+            onRecord: {
+                funcName: "raindrop.recorder.start",
+                args: [
+                    "{enviro}.asyncScheduler",
+                    "{that}.options.duration",
+                    "{that}.events.afterRecorded.fire"
+                ]
+            },
+
+            afterRecorded: [
+                "{enviro}.saveBuffer(raindrop, float32)",
+                "{playButton}.pause()"
+            ]
+        }
+    });
+
+    raindrop.recorder.start = function (scheduler, duration, afterRecorded) {
+        scheduler.once(duration, afterRecorded);
+    };
 
 }());

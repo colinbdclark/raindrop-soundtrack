@@ -216,7 +216,7 @@
                 ugen: "flock.ugen.envGen",
                 envelope: {
                     levels: [0, 0, 1],
-                    times: [230, 30],
+                    times: [250, 20],
                 },
                 gate: 1.0,
                 mul: 0.3
@@ -232,8 +232,10 @@
         mul: {
             ugen: "flock.ugen.envGen",
             envelope: {
+                // Open the piece, then fade.
+                // Squares start at 4:30; come back for those.
                 levels: [0, 0, 1, 0, 0, 1, 1, 0],
-                times: [2, 1, 22, 205, 30, 35, 15],
+                times: [2, 1, 22, 215, 15, 80, 10],
             },
             gate: 1.0,
             mul: 0.025

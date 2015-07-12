@@ -82,14 +82,6 @@
                 }
             },
 
-            // breathing: {
-            //     type: "raindrop.breathing",
-            //     options: {
-            //         bus: "{chopinLeft}.options.bus",
-            //         addToEnvironment: 8
-            //     }
-            // },
-
             sun: {
                 type: "raindrop.sunOneModeModulated",
                 options: {

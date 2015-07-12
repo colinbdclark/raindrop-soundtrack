@@ -76,10 +76,16 @@
                             mul: 250
                         }
                     },
-                    threshold: 0.2
+                    threshold: 0.5
                 }
             },
-            mul: 0.05
+            mul: {
+                ugen: "flock.ugen.triOsc",
+                freq: 1/120,
+                phase: 0.5,
+                mul: 0.025,
+                add: 0.025
+            }
         }
     });
 
@@ -188,7 +194,7 @@
             mul: {
                 ugen: "flock.ugen.line",
                 start: 0,
-                end: 0.2,
+                end: 0.25,
                 duration: 10.0
             }
         }

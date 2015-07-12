@@ -23,6 +23,10 @@
             {
                 id: "cas-sed",
                 url: "audio/cas-sed-06-023-twohour.wav"
+            },
+            {
+                id: "interstellar",
+                url: "audio/interstellar.wav"
             }
         ]
     });

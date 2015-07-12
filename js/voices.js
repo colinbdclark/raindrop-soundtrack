@@ -2,7 +2,9 @@
     "use strict";
 
     fluid.defaults("raindrop.warbledRightPiano", {
-        gradeNames: ["flock.synth", "autoInit"],
+        gradeNames: ["flock.synth", "raindrop.loudVoiceEnvelope", "autoInit"],
+
+        mul: 0.5,
 
         synthDef: {
             ugen: "flock.ugen.in",
@@ -17,14 +19,15 @@
                         bus: 14
                     }
                 },
-                mul: 0.5
+                mul: "{that}.options.envelope"
             }
         }
     });
 
-    // TODO: Limit this!
     fluid.defaults("raindrop.distortedLeftPiano", {
-        gradeNames: ["flock.synth", "autoInit"],
+        gradeNames: ["flock.synth", "raindrop.loudVoiceEnvelope", "autoInit"],
+
+        mul: 0.05,
 
         synthDef: {
             ugen: "flock.ugen.distortion.deJonge",
@@ -47,7 +50,7 @@
                         bus: 14
                     }
                 },
-                mul: 0.05
+                mul: "{that}.options.envelope"
             }
         }
     });
@@ -104,23 +107,23 @@
                 source: {
                     ugen: "flock.ugen.in",
                     bus: "{that}.options.modBus",
-                    mul: "{that}.options.mul"
+                    mul: "{that}.options.envelope"
                 }
             }
         }
     });
 
     fluid.defaults("raindrop.sunOneModeModulated", {
-        gradeNames: ["raindrop.inputModulated", "autoInit"],
+        gradeNames: ["raindrop.inputModulated", "raindrop.loudVoiceEnvelope", "autoInit"],
 
         bus: 11,
         modBus: 9,
         lag: 0.5,
-        mul: 20
+        mul: 15
     });
 
     fluid.defaults("raindrop.jcycloModulated", {
-        gradeNames: ["raindrop.inputModulated", "autoInit"],
+        gradeNames: ["raindrop.inputModulated", "raindrop.regularVoiceEnvelope", "autoInit"],
 
         bus: 12,
         modBus: 10,
@@ -129,7 +132,7 @@
     });
 
     fluid.defaults("raindrop.casSedModulated", {
-        gradeNames: ["raindrop.inputModulated", "autoInit"],
+        gradeNames: ["raindrop.inputModulated", "raindrop.regularVoiceEnvelope", "autoInit"],
 
         bus: 13,
         modBus: 9,
@@ -138,7 +141,14 @@
     });
 
     fluid.defaults("raindrop.granulatedPiano", {
-        gradeNames: ["flock.synth", "autoInit"],
+        gradeNames: ["flock.synth", "raindrop.regularVoiceEnvelope", "autoInit"],
+
+        mul: {
+            ugen: "flock.ugen.line",
+            start: 0,
+            end: 0.25,
+            duration: 10.0
+        },
 
         synthDef: {
             ugen: "flock.ugen.triggerGrains",
@@ -191,12 +201,42 @@
                     buffer: "chopin-left"
                 }
             },
+
+            mul: "{that}.options.envelope"
+        }
+    });
+
+    fluid.defaults("raindrop.plainChopin", {
+        gradeNames: ["flock.synth", "autoInit"],
+
+        synthDef: {
+            ugen: "flock.ugen.in",
+            bus: 9,
             mul: {
-                ugen: "flock.ugen.line",
-                start: 0,
-                end: 0.25,
-                duration: 10.0
+                ugen: "flock.ugen.envGen",
+                envelope: {
+                    levels: [0, 0, 1],
+                    times: [230, 30],
+                },
+                gate: 1.0,
+                mul: 0.3
             }
+        }
+    });
+
+    fluid.defaults("raindrop.interstellar", {
+        gradeNames: ["raindrop.player", "autoInit"],
+
+        buffer: "interstellar",
+        loop: 1.0,
+        mul: {
+            ugen: "flock.ugen.envGen",
+            envelope: {
+                levels: [0, 0, 1, 0, 0, 1, 1, 0],
+                times: [2, 1, 22, 205, 30, 35, 15],
+            },
+            gate: 1.0,
+            mul: 0.025
         }
     });
 }());

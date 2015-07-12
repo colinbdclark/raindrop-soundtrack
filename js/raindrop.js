@@ -108,6 +108,20 @@
                 options: {
                     addToEnvironment: 12
                 }
+            },
+
+            plainChopin: {
+                type: "raindrop.plainChopin",
+                options: {
+                    addToEnvironment: 13
+                }
+            },
+
+            interstellar: {
+                type: "raindrop.interstellar",
+                options: {
+                    addToEnvironment: 14
+                }
             }
         },
 

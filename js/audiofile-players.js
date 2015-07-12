@@ -1,5 +1,20 @@
 (function () {
 
+    fluid.defaults("raindrop.player", {
+        gradeNames: ["flock.synth", "autoInit"],
+
+        buffer: {},
+        loop: 0.0,
+        mul: 1.0,
+
+        synthDef: {
+            ugen: "flock.ugen.playBuffer",
+            buffer: "{that}.options.buffer",
+            loop: "{that}.options.loop",
+            mul: "{that}.options.mul"
+        }
+    });
+
     fluid.defaults("raindrop.audioBusPlayer", {
         gradeNames: ["flock.synth", "autoInit"],
 

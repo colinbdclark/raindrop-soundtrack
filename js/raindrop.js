@@ -75,20 +75,20 @@
                 }
             },
 
-            // distortedPiano: {
-            //     type: "raindrop.distortedLeftPiano",
-            //     options: {
-            //         addToEnvironment: 7
-            //     }
-            // },
-
-            breathing: {
-                type: "raindrop.breathing",
+            distortedPiano: {
+                type: "raindrop.distortedLeftPiano",
                 options: {
-                    bus: "{chopinLeft}.options.bus",
-                    addToEnvironment: 8
+                    addToEnvironment: 7
                 }
             },
+
+            // breathing: {
+            //     type: "raindrop.breathing",
+            //     options: {
+            //         bus: "{chopinLeft}.options.bus",
+            //         addToEnvironment: 8
+            //     }
+            // },
 
             sun: {
                 type: "raindrop.sunOneModeModulated",

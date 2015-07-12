@@ -8,13 +8,21 @@
             ugen: "flock.ugen.in",
             bus: 10,
             mul: {
-                ugen: "flock.ugen.in",
-                bus: 14,
-                mul: 20
+                ugen: "flock.ugen.math",
+                source: {
+                    ugen: "flock.ugen.math",
+                    source: 0.1,
+                    sub: {
+                        ugen: "flock.ugen.in",
+                        bus: 14
+                    }
+                },
+                mul: 0.5
             }
         }
     });
 
+    // TODO: Limit this!
     fluid.defaults("raindrop.distortedLeftPiano", {
         gradeNames: ["flock.synth", "autoInit"],
 
@@ -27,9 +35,20 @@
             amount: {
                 ugen: "flock.ugen.in",
                 bus: 14,
-                mul: 1000
+                mul: 100
             },
-            mul: 0.01
+            mul: {
+                ugen: "flock.ugen.math",
+                source: {
+                    ugen: "flock.ugen.math",
+                    source: 0.0001,
+                    sub: {
+                        ugen: "flock.ugen.in",
+                        bus: 14
+                    }
+                },
+                mul: 0.05
+            }
         }
     });
 
@@ -42,21 +61,25 @@
             ugen: "flock.ugen.math",
             rate: "audio",
             source: {
-                ugen: "flock.ugen.filter.biquad.hp",
-                freq: 8000,
-                q: 100,
+                ugen: "flock.ugen.gate",
                 source: {
                     ugen: "flock.ugen.filter.biquad.hp",
-                    freq: 5000,
+                    freq: 8000,
                     q: 100,
                     source: {
-                        ugen: "flock.ugen.in",
-                        bus: "{that}.options.bus",
-                        mul: 250
-                    }
+                        ugen: "flock.ugen.filter.biquad.hp",
+                        freq: 5000,
+                        q: 100,
+                        source: {
+                            ugen: "flock.ugen.in",
+                            bus: "{that}.options.bus",
+                            mul: 250
+                        }
+                    },
+                    threshold: 0.2
                 }
             },
-            mul: 0.1
+            mul: 0.05
         }
     });
 
@@ -87,7 +110,7 @@
         bus: 11,
         modBus: 9,
         lag: 0.5,
-        mul: 30
+        mul: 20
     });
 
     fluid.defaults("raindrop.jcycloModulated", {
@@ -96,7 +119,7 @@
         bus: 12,
         modBus: 10,
         lag: 1.0,
-        mul: 5
+        mul: 0.1
     });
 
     fluid.defaults("raindrop.casSedModulated", {
@@ -105,7 +128,7 @@
         bus: 13,
         modBus: 9,
         lag: 10.0,
-        mul: 30
+        mul: 2
     });
 
     fluid.defaults("raindrop.granulatedPiano", {
@@ -117,8 +140,8 @@
             dur: {
                 ugen: "flock.ugen.lfNoise",
                 freq: 1/2,
-                mul: 0.6,
-                add: 1,
+                mul: 0.5,
+                add: 0.5,
                 options: {
                     interpolation: "linear"
                 }
@@ -128,15 +151,15 @@
                 source: 1.0,
                 sideChain: {
                     ugen: "flock.ugen.in",
-                    bus: 10
+                    bus: 9
                 },
-                threshold: 0.002
+                threshold: 0.005
             },
             speed: {
                 ugen: "flock.ugen.sinOsc",
                 freq: {
                     ugen: "flock.ugen.lfNoise",
-                    freq: 1/100,
+                    freq: 1/2,
                     mul: 1/100,
                     add: 1/100,
                     options: {
@@ -147,20 +170,27 @@
                 add: 0.9
             },
             centerPos: {
-                ugen: "flock.ugen.lfNoise",
-                freq: 1/100,
-                mul: {
-                    ugen: "flock.ugen.bufferLength",
-                    buffer: "chopin-left",
-                    mul: 0.0001
+                ugen: "flock.ugen.phasor",
+                rate: "audio",
+                step: {
+                    ugen: "flock.ugen.math",
+                    source: 0.25,
+                    div: {
+                        ugen: "flock.ugen.sampleRate"
+                    }
                 },
-                add: {
-                    ugen: "flock.ugen.bufferLength",
-                    buffer: "chopin-left",
-                    mul: 0.0001
+                start: 5,
+                end: {
+                    ugen: "flock.ugen.bufferDuration",
+                    buffer: "chopin-left"
                 }
             },
-            mul: 0.75
+            mul: {
+                ugen: "flock.ugen.line",
+                start: 0,
+                end: 0.2,
+                duration: 10.0
+            }
         }
     });
 }());

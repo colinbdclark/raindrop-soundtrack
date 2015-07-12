@@ -241,4 +241,23 @@
             mul: 0.025
         }
     });
+
+    fluid.defaults("raindrop.pip", {
+        gradeNames: ["flock.synth", "autoInit"],
+
+        synthDef: {
+            ugen: "flock.ugen.sin",
+            freq: 1000,
+            mul: {
+                id: "env",
+                ugen: "flock.ugen.envGen",
+                gate: 1.0,
+                mul: 0.2,
+                envelope: {
+                    levels: [0, 1, 1, 0],
+                    times: [0, 1/30, 0]
+                }
+            }
+        }
+    });
 }());

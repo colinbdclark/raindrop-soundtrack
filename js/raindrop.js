@@ -122,6 +122,13 @@
                 options: {
                     addToEnvironment: 14
                 }
+            },
+
+            pip: {
+                type: "raindrop.pip",
+                options: {
+                    addToEnvironment: 15
+                }
             }
         },
 
